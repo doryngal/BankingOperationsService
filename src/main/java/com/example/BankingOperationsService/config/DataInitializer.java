@@ -15,7 +15,6 @@ import java.time.Month;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
-
     @Autowired
     private UserRepository userRepository;
 
