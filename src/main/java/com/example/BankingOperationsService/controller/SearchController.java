@@ -33,7 +33,7 @@ public class SearchController {
             @ApiResponse(responseCode = "404", description = "Users not found")
     })
     @GetMapping("/search/byBirthDateAfter")
-    public ResponseEntity<List<UserDto>> findByBirthDateAfter(@RequestParam LocalDate date) {
+    public ResponseEntity<List<UserDto>> findByBirthDateAfter(@RequestParam("date") LocalDate date) {
         return ResponseEntity.ok(userService.findByBirthDateAfter(date));
     }
 
@@ -44,7 +44,7 @@ public class SearchController {
             @ApiResponse(responseCode = "404", description = "Users not found")
     })
     @GetMapping("/search/byPhone")
-    public ResponseEntity<UserDto> findByPhone(@RequestParam String phone) {
+    public ResponseEntity<UserDto> findByPhone(@RequestParam("phone") String phone) {
         return ResponseEntity.ok(userService.findByPhone(phone));
     }
 
@@ -55,7 +55,7 @@ public class SearchController {
             @ApiResponse(responseCode = "404", description = "Users not found")
     })
     @GetMapping("/search/byFullName")
-    public ResponseEntity<List<UserDto>> findByFullName(@RequestParam String fullName) {
+    public ResponseEntity<List<UserDto>> findByFullName(@RequestParam("fullName") String fullName) {
         return ResponseEntity.ok(userService.findByFullName(fullName));
     }
 
@@ -66,7 +66,7 @@ public class SearchController {
             @ApiResponse(responseCode = "404", description = "Users not found")
     })
     @GetMapping("/search/byEmail")
-    public ResponseEntity<UserDto> findByEmail(@RequestParam String email) {
+    public ResponseEntity<UserDto> findByEmail(@RequestParam("email") String email) {
         return ResponseEntity.ok(userService.findByEmail(email));
     }
 }

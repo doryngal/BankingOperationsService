@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +45,7 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping("/add-contact")
-    public ResponseEntity<?> addContact(@RequestBody ContactDto contactDto) {
+    public ResponseEntity<?> addContact(@Valid @RequestBody ContactDto contactDto) {
         try {
             userService.addContact(contactDto);
             return ResponseEntity.ok().body("Контакт успешно добавлен.");
@@ -59,7 +60,7 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PutMapping("/edit-contact/{contactId}")
-    public ResponseEntity<?> updateContact(@PathVariable Long contactId, @RequestBody ContactDto contactDto) {
+    public ResponseEntity<?> updateContact(@PathVariable Long contactId, @Valid @RequestBody ContactDto contactDto) {
         try {
             return userService.updateContact(contactId, contactDto);
         } catch (IllegalArgumentException e) {
